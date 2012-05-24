@@ -1,4 +1,11 @@
-
+////////////////////////////////////////////////////////////////////////////////
+//
+//
+// Copyright 2012 Shuzo Kuwako
+// All Rights Reserved.
+//
+//
+//////////////////////////////////////////////////////////////////////////////////
 package framingo.model.process 
 {
 	import flash.events.EventDispatcher;
@@ -56,7 +63,6 @@ package framingo.model.process
 			if (!(action is FlowAction)) return;
 			_action = action;
 			_currentProcess = _indexProcess;
-			trace("bb")
 			executeProcess();
 		}
 		
@@ -66,7 +72,6 @@ package framingo.model.process
 		 */
 		public final function executeProcess():void
 		{
-			trace(_currentProcess.after);
 			_currentProcess.addEventListener(ProcessActionEvent.THROW, processActionRecievHandler);
 			_currentProcess.addEventListener(ProcessEvent.FINISH, processFinishEvent);
 			_currentProcess.mapData(_currentDataGroup);
@@ -83,7 +88,6 @@ package framingo.model.process
 		 */
 		private final function processFinishEvent(e:ProcessEvent):void 
 		{
-			trace("aa")
 			_currentProcess = _currentProcess.after;
 			if (_currentProcess == null) return;
 			executeProcess();	

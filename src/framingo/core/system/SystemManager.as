@@ -1,3 +1,11 @@
+////////////////////////////////////////////////////////////////////////////////
+//
+//
+// Copyright 2012 Shuzo Kuwako
+// All Rights Reserved.
+//
+//
+//////////////////////////////////////////////////////////////////////////////////
 package framingo.core.system 
 {
 	import framingo.core.FMCoreClass;
@@ -12,6 +20,7 @@ package framingo.core.system
 	{
 		/**
 		 * アプリケーション全体のクラス定義を行います。
+		 * 設定されたデータはシングルトン化され、取得のみが可能になります。
 		 */
 		private static var _core:FMCoreClass;
 		private static var _config:FMCoreSetting;
@@ -30,7 +39,6 @@ package framingo.core.system
 				_system = this;
 				_intialized = true;
 			}
-				trace(_core, _config);
 		}
 		
 		static public function get core():FMCoreClass 

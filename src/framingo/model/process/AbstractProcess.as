@@ -1,7 +1,15 @@
-
+////////////////////////////////////////////////////////////////////////////////
+//
+//
+// Copyright 2012 Shuzo Kuwako
+// All Rights Reserved.
+//
+//
+//////////////////////////////////////////////////////////////////////////////////
 package framingo.model.process 
 {
 	import flash.events.EventDispatcher;
+	import flash.utils.IDataInput;
 	import framingo.core.error.UnimplementedError;
 	import framingo.data.AbstractDataGroup;
 	import framingo.data.action.AbstractAction;
@@ -18,7 +26,7 @@ package framingo.model.process
 		private var _type:String = "";
 		protected var _action:AbstractAction;
 		protected var _dataGroup:AbstractDataGroup;
-		
+		protected var _transfarData:IDataTransfer;
 		protected var _state:String = "";
 		protected var _followed:Array = [];
 		
@@ -39,13 +47,12 @@ package framingo.model.process
 		 */
 		public function mapData(group:AbstractDataGroup):void {
 			_dataGroup = group;
-			throw new UnimplementedError();
 		}
 		
 		
 		public function mapTransfarData(transferObject:IDataTransfer):void 
 		{
-			trace(transferObject);
+			_transfarData = transferObject;
 		}
 		
 		/**
@@ -69,7 +76,7 @@ package framingo.model.process
 		/**
 		 * 処理の終了のみを通知する関数。
 		 */
-		public final function throwFinsh():void
+		public final function throwFinish():void
 		{
 			_after = getAfterProcess(_state);
 			dispatchEvent(new ProcessEvent(ProcessEvent.FINISH));

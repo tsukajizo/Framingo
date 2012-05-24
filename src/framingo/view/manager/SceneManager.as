@@ -1,4 +1,11 @@
-
+////////////////////////////////////////////////////////////////////////////////
+//
+//
+// Copyright 2012 Shuzo Kuwako
+// All Rights Reserved.
+//
+//
+//////////////////////////////////////////////////////////////////////////////////
 package framingo.view.manager 
 {
 	import flash.display.Sprite;
@@ -91,7 +98,6 @@ package framingo.view.manager
 		 */
 		private function initMainScene(e:SceneEvent):void
 		{
-			trace()
 			e.currentTarget.removeEventListener(SceneEvent.INIT, initMainScene);
 			dispatchEvent(new SceneManagerEvent(SceneManagerEvent.INIT_STAGE));
 		}
@@ -141,7 +147,6 @@ package framingo.view.manager
 		{
 
 				if (action is SceneAction) {
-					trace(SceneAction(action).next)
 					setSelectedScene(SceneAction(action).next,action.transferObject);
 					return;
 				}

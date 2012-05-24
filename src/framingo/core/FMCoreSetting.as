@@ -1,5 +1,14 @@
+////////////////////////////////////////////////////////////////////////////////
+//
+//
+// Copyright 2012 Shuzo Kuwako
+// All Rights Reserved.
+//
+//
+//////////////////////////////////////////////////////////////////////////////////
 package framingo.core 
 {
+	import flash.display.Sprite;
 	/**
 	 * ...アプリケーションの細かい設定を定義するものです。
 	 * こちらを継承した、設定を読み込んで、
@@ -11,9 +20,22 @@ package framingo.core
 	public class FMCoreSetting 
 	{
 		public static const VERSION:Number = 0.10;
+		
+		protected static var _global:Sprite;
+		
 		public function FMCoreSetting() 
 		{
-			
+			init();
+		}
+		
+		private function init():void 
+		{
+			_global = new Sprite();
+		}
+		
+		public static function get GLOBAL():Sprite 
+		{
+			return _global;
 		}
 		
 	}

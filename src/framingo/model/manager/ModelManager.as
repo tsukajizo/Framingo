@@ -1,4 +1,11 @@
-
+////////////////////////////////////////////////////////////////////////////////
+//
+//
+// Copyright 2012 Shuzo Kuwako
+// All Rights Reserved.
+//
+//
+//////////////////////////////////////////////////////////////////////////////////
 package framingo.model.manager
 {
 	import flash.events.EventDispatcher;
@@ -58,11 +65,9 @@ package framingo.model.manager
 		 */
 		public function setSelectedFlow(type:String):void
 		{
-			trace(type)
 			_currentProcessFlow = _flowFactory.getFlowByName(type);
 			_currentProcessFlow.addEventListener(FlowEvent.FINISH, processFinishEvent);
 			var dataGroup:AbstractDataGroup = _dataManager.getDataGroupByType(type);
-			trace("setSelectedFlow" , type, dataGroup);
 			_currentProcessFlow.setDataGroup(dataGroup);
 		}
 		
@@ -74,7 +79,6 @@ package framingo.model.manager
 		public function execAction(action:AbstractAction):void
 		{
 			//シーンアクションが或る場合ほかのアクションは受け付けない。
-			trace(action)
 			if (!(action is FlowAction)) return;
 			setSelectedFlow(action.type);
 			_currentProcessFlow.execAction(action);

@@ -6,18 +6,21 @@
 //
 //
 //////////////////////////////////////////////////////////////////////////////////
-package framingo.presenter 
+package fralibs.ui.menu.action 
 {
 	import framingo.data.action.AbstractAction;
-	
 	/**
 	 * ...
 	 * @author Shuzo Kuwako
 	 */
-	public interface IThrowableAction 
+	public class ExitAction extends AbstractAction
 	{
-		function throwAction():void;
-		function get action():AbstractAction 
+		
+		public function ExitAction() 
+		{
+			
+		}
+		
 	}
-	
+
 }

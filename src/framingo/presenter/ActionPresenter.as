@@ -1,4 +1,11 @@
-
+////////////////////////////////////////////////////////////////////////////////
+//
+//
+// Copyright 2012 Shuzo Kuwako
+// All Rights Reserved.
+//
+//
+//////////////////////////////////////////////////////////////////////////////////
 package framingo.presenter 
 {
 	import flash.events.Event;
@@ -56,7 +63,6 @@ package framingo.presenter
 		//後でまとめる
 		private function receieveProcessActionHandler(e:ProcessActionEvent):void 
 		{
-			trace("receieveActionHandler", e.action);
 			_viewManager.execAction(e.action);
 			_modelManager.execAction(e.action);
 		}

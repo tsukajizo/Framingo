@@ -1,7 +1,15 @@
-
+////////////////////////////////////////////////////////////////////////////////
+//
+//
+// Copyright 2012 Shuzo Kuwako
+// All Rights Reserved.
+//
+//
+//////////////////////////////////////////////////////////////////////////////////
 package framingo.view.render 
 {
 	import flash.display.Sprite;
+	import framingo.data.action.IDataTransfer;
 	import framingo.data.action.RenderAction;
 	import framingo.view.events.RenderObjectEvent;
 	/**
@@ -14,6 +22,7 @@ package framingo.view.render
 		 * アクションを実行するためのID
 		 */
 		private var _objectId:int;
+		protected var _transferObject:IDataTransfer
 		
 		/**
 		 * コンストラクタ
@@ -31,7 +40,7 @@ package framingo.view.render
 		 */
 		public function execAction(action:RenderAction):void
 		{
-			trace(action,this);
+			_transferObject = action.transferObject;
 		}
 		
 		

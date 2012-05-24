@@ -1,8 +1,16 @@
-
+////////////////////////////////////////////////////////////////////////////////
+//
+//
+// Copyright 2012 Shuzo Kuwako
+// All Rights Reserved.
+//
+//
+//////////////////////////////////////////////////////////////////////////////////
 package framingo.view.manager 
 {
 	import flash.display.Sprite;
 	import framingo.data.action.AbstractAction;
+	import framingo.core.FMCoreSetting;
 	/**
 	 * ...View全体を管理するための
 	 * @author Shuzo Kuwako
@@ -23,7 +31,7 @@ package framingo.view.manager
 		public function initSettings():void
 		{
 			sceneManager = new SceneManager();
-
+			addChild(FMCoreSetting.GLOBAL);
 			addChild(sceneManager);
 		}
 
@@ -32,7 +40,6 @@ package framingo.view.manager
 		
 		public function execAction(action:AbstractAction):void 
 		{
-			trace("ViewManager:",action)
 			sceneManager.execAction(action);
 		}
 		
