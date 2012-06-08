@@ -6,7 +6,7 @@ package framingo.core.config
 	 */
 	public class FMVersion 
 	{
-		public static const VER:String = 0.1;
+		public static const VER:Number = 0.1;
 		
 		public function FMVersion() 
 		{
