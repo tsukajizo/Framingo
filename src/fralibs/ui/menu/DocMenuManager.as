@@ -10,7 +10,7 @@ package fralibs.ui.menu
 	import flash.ui.ContextMenu;
 	import fralibs.ui.menu.data.MenuObject;
 	/**
-	 * ...
+	 * ...ドックトレイ用のメニューを管理するためのクラス。
 	 * @author Shuzo Kuwako
 	 */
 	public class DocMenuManager 
@@ -26,6 +26,10 @@ package fralibs.ui.menu
 		private var _systemTrayIcon:SystemTrayIcon;
 		private var _docIcon:DockIcon;
 		
+		/**
+		 * コンストラクタ
+		 * @param	target
+		 */
 		public function DocMenuManager(target:Sprite)
 		{
 			_target = target;
@@ -33,24 +37,35 @@ package fralibs.ui.menu
 			setDefaultIcon();
 		}
 		
+		/**
+		 * デフォルトのアイコンを設定する
+		 */
 		private function setDefaultIcon():void
 		{
 			_iconImage = new Icon() as Bitmap;
 		}
 		
+		/**
+		 * メニューの初期化。
+		 */
 		private function initMenu():void 
 		{
 			_docMenu = new NativeMenu();
 			_contextMenu = new ContextMenu();
 		}
 		
+		/**
+		 * メニュー追加用のインターフェース
+		 */
 		public function addMenu():void
 		{
 			setDockTrayMenu();
 		}
 		
-		
-		public function setDockTrayMenu():void
+		/**
+		 * メニューを追加する・
+		 */
+		private function setDockTrayMenu():void
 		{
 			var app:NativeApplication = NativeApplication.nativeApplication;
 			
@@ -70,7 +85,10 @@ package fralibs.ui.menu
 
 		
 
-		
+		/**
+		 * メニューを追加する。
+		 * @param	item
+		 */
 		public function addItem(item:MenuObject):void
 		{
 			_docMenu.addItem(item.item);

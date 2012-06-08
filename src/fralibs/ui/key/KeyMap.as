@@ -1,7 +1,8 @@
 package fralibs.ui.key 
 {
 	/**
-	 * ...
+	 * ...キーボードを簡単に設定できるようにするためのユーティリティクラス。
+	 * 
 	 * @author Shuzo Kuwako
 	 */
 	public class KeyMap 
@@ -11,7 +12,12 @@ package fralibs.ui.key
 		{
 			
 		}
-		
+
+		/**
+		 * 入力した値をACIIのコードへと変換する。[0-9][a-z]
+		 * @param	str
+		 * @return
+		 */
 		public static function unicodeToAcii(str:String):int
 		{
 			switch(str) {

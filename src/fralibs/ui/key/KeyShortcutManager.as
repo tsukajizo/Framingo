@@ -3,7 +3,7 @@ package fralibs.ui.key
 	import flash.display.Sprite;
 	import fralibs.ui.key.data.KeyShortcutObject;
 	/**
-	 * ...
+	 * ...キーボードショートカットを保持しておくためのクラス。
 	 * @author Shuzo Kuwako
 	 */
 	public class KeyShortcutManager
@@ -17,12 +17,20 @@ package fralibs.ui.key
 			_target = target
 		}
 		
+		/**
+		 * ショートカットをリストに追加する。
+		 * @param	shortcut
+		 */
 		public function addShortCut(shortcut:KeyShortcutObject):void
 		{
 			_shortCuts.push(shortcut);
 			_target.addChild(shortcut);
 		}
 		
+		/**
+		 * ショートカットをリストから削除する。
+		 * @param	shortcut
+		 */
 		public function removeShortCut(shortcut:KeyShortcutObject):void
 		{
 			_shortCuts.splice(_shortCuts.indexOf(shortcut), 1);

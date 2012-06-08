@@ -11,7 +11,7 @@ package fralibs.ui.menu.data
 	import framingo.presenter.IThrowableAction;
 	import framingo.view.events.ActionObjectEvent;
 	/**
-	 * ...
+	 * ...各メニューを設定するためのクラス。
 	 * @author Shuzo Kuwako
 	 */
 	public class MenuObject extends Sprite implements IThrowableAction
@@ -20,26 +20,48 @@ package fralibs.ui.menu.data
 		private var _customItem:ContextMenuItem;
 		private var _label:String;
 		protected var _action:AbstractAction;
+		private var _shortCut:String;
 		
-		public function MenuObject(label:String = "item") 
+		public function MenuObject(label:String = "item",shortCut:String = "") 
 		{
 			_label = label;
+			_shortCut = shortCut;
 			initMenu();
 		}
 		
+		/**
+		 * メニューを初期化する。
+		 */
 		private function initMenu():void
 		{
 			_item = new NativeMenuItem(_label);
 			_customItem = new ContextMenuItem(_label);
+			
+			if(_shortCut != ""){
+				_item.keyEquivalent = _shortCut;
+				_customItem.keyEquivalent = _shortCut;
+			}			
 			_item.addEventListener(Event.SELECT, itemSelectedHandler);
 			_customItem.addEventListener(ContextMenuEvent.MENU_ITEM_SELECT, itemSelectedHandler);
 		}
 		
+		/**
+		 * 選択されたときの処理。
+		 * @param	e
+		 */
 		protected function itemSelectedHandler(e:Event):void 
 		{
 			throwAction();
 		}
 
+		/**
+		 * 指定したアクションを投げる。
+		 */
+		public function throwAction():void {
+			trace(_action);
+			dispatchEvent( new ActionObjectEvent(ActionObjectEvent.THROW,_action));
+		}
+		
 		
 		public function get label():String 
 		{
@@ -68,13 +90,7 @@ package fralibs.ui.menu.data
 			return _customItem;
 		}
 		
-		/**
-		 * 
-		 */
-		public function throwAction():void {
-			dispatchEvent( new ActionObjectEvent(ActionObjectEvent.THROW,_action));
-		}
-		
+
 		
 		public function set action(value:AbstractAction):void 
 		{
