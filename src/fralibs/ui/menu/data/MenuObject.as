@@ -11,7 +11,9 @@ package fralibs.ui.menu.data
 	import framingo.presenter.IThrowableAction;
 	import framingo.view.events.ActionObjectEvent;
 	/**
-	 * ...各メニューを設定するためのクラス。
+	 * ...メニュー設定用のオブジェクト　
+	 * コンテキストメニュー、Docメニュー、ウィンドウメニューを同じインターフェースで利用できるようにするためのライブラリです。
+	 * キーボードショートカット用のライブラリと、こちらのメニューのショートカットを同時に設定した場合、こちらで設定したショートカットが優先されます。
 	 * @author Shuzo Kuwako
 	 */
 	public class MenuObject extends Sprite implements IThrowableAction
@@ -22,6 +24,11 @@ package fralibs.ui.menu.data
 		protected var _action:AbstractAction;
 		private var _shortCut:String;
 		
+		/**
+		 * コンストラクタ
+		 * @param	label　メニューのラベル
+		 * @param	shortCut　ショートカット
+		 */
 		public function MenuObject(label:String = "item",shortCut:String = "") 
 		{
 			_label = label;
@@ -37,6 +44,7 @@ package fralibs.ui.menu.data
 			_item = new NativeMenuItem(_label);
 			_customItem = new ContextMenuItem(_label);
 			
+			//ショートカットの設定
 			if(_shortCut != ""){
 				_item.keyEquivalent = _shortCut;
 				_customItem.keyEquivalent = _shortCut;
@@ -46,28 +54,40 @@ package fralibs.ui.menu.data
 		}
 		
 		/**
-		 * 選択されたときの処理。
+		 * メニューが選ばれた時の処理。
 		 * @param	e
 		 */
 		protected function itemSelectedHandler(e:Event):void 
 		{
 			throwAction();
 		}
-
+		
 		/**
-		 * 指定したアクションを投げる。
+		 * 　アクションを実行する。
 		 */
 		public function throwAction():void {
-			trace(_action);
 			dispatchEvent( new ActionObjectEvent(ActionObjectEvent.THROW,_action));
 		}
 		
 		
+		/*******************************
+		 * 
+		 *   setter / getter
+		 * 
+		 ******************************/
+		
+		 
+		/**
+		 * ラベルを取得する。
+		 */
 		public function get label():String 
 		{
 			return _label;
 		}
-		
+
+		/**
+		 * ラベルを設定する。
+		 */
 		public function set label(value:String):void 
 		{
 			_label = value;
@@ -89,8 +109,6 @@ package fralibs.ui.menu.data
 		{
 			return _customItem;
 		}
-		
-
 		
 		public function set action(value:AbstractAction):void 
 		{

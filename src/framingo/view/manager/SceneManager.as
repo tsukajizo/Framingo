@@ -27,12 +27,26 @@ package framingo.view.manager
 	{
 		private var _stage:Stage;
 		private var _currentScene:AbstractScene;
-		private var _sceneFactory:SceneFactory
+		private var _sceneFactory:SceneFactory;
+		private static var _instance:SceneManager;
 		
 		public function SceneManager() 
 		{
-			initSetting();
-			addStageFunc();
+			if (_instance != null) {
+				throw new Error("Singleton Error");
+			}else {
+				initSetting();
+				addStageFunc();
+			}
+
+		}
+		
+		public static function getInstance():SceneManager
+		{
+			if (_instance == null) {
+				_instance = new SceneManager();
+			}
+			return _instance;
 		}
 		
 		/**
@@ -90,6 +104,7 @@ package framingo.view.manager
 		 */
 		private function initMainScene(e:SceneEvent):void
 		{
+			trace()
 			e.currentTarget.removeEventListener(SceneEvent.INIT, initMainScene);
 			dispatchEvent(new SceneManagerEvent(SceneManagerEvent.INIT_STAGE));
 		}
@@ -139,10 +154,10 @@ package framingo.view.manager
 		{
 
 				if (action is SceneAction) {
+					trace(SceneAction(action).next)
 					setSelectedScene(SceneAction(action).next,action.transferObject);
 					return;
 				}
-
 			_currentScene.execAction(action);
 		}
 

@@ -36,6 +36,7 @@ package fralibs.ui.key.data
 		 */
 		public function KeyShortcutObject(keyType:String,action:AbstractAction) 
 		{
+			trace("keyType:", keyType)
 			_keyType = KeyMap.unicodeToAcii(keyType);
 			super(action);
 			initKeyAction();
@@ -81,14 +82,12 @@ package fralibs.ui.key.data
 			}
 		}
 		
-		
 		/**
 		 * キーボードが押されたときの処理。
 		 * @param	e
 		 */
 		private function keyDownActionHandler(e:KeyboardEvent):void 
 		{
-
 			switch(e.keyCode) {
 				case Keyboard.CONTROL:
 					_onCtrl = true;
@@ -100,6 +99,7 @@ package fralibs.ui.key.data
 					keyPressed();
 					break;
 				default:
+					trace(e.keyCode);
 					break;
 			}
 		}
@@ -109,6 +109,7 @@ package fralibs.ui.key.data
 		 */
 		private function keyPressed():void 
 		{
+			trace("throw")
 			if (_withCtrl && _withShift) {
 				if (!_onCtrl) return;
 				if (!_onShift) return;

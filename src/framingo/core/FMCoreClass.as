@@ -4,6 +4,7 @@ package framingo.core
 	import framingo.core.error.UnimplementedError;
 	import framingo.model.factory.FlowFactory;
 	import framingo.model.manager.DataManager;
+	import framingo.view.factory.DialogFactory;
 	import framingo.view.factory.SceneFactory;
 	/**
 	 * ...アプリケーションの細かいクラスを定義するものです。
@@ -40,6 +41,15 @@ package framingo.core
 		{
 			throw new UnimplementedError();
 			return new SceneFactory();
+		}
+		
+		/**
+		 * ダイアログを作成するファクトリクラスを作成する。
+		 * @return
+		 */
+		public function getDialogFactory():DialogFactory
+		{
+			return new DialogFactory();
 		}
 		
 		/**

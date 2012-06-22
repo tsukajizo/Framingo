@@ -22,9 +22,11 @@ package framingo.view.manager
 		
 		public function initSettings():void
 		{
-			sceneManager = new SceneManager();
+			sceneManager = SceneManager.getInstance();
+			dialogManager = DialogManager.getInstance(sceneManager);
 			addChild(FMCoreSetting.GLOBAL);
 			addChild(sceneManager);
+			addChild(dialogManager);
 		}
 
 		
@@ -32,7 +34,9 @@ package framingo.view.manager
 		
 		public function execAction(action:AbstractAction):void 
 		{
+			trace("ViewManager:",action)
 			sceneManager.execAction(action);
+			dialogManager.execAction(action);
 		}
 		
 
