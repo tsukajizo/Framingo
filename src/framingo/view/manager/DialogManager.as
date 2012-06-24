@@ -89,7 +89,6 @@ package framingo.view.manager
 		 */
 		public final function execAction(action:AbstractAction):void
 		{
-			trace("execAction", action.type);
 			if (!_initialized) {
 				return;
 			}
