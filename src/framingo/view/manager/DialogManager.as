@@ -101,7 +101,6 @@ package framingo.view.manager
 			switch(DialogAction(action).act) {
 				case DialogAction.POP_ACT:
 					popDialog(action);
-								trace("aaaaaaaaaaaa")
 					break;
 				
 				case DialogAction.CLOSE_ACT:
